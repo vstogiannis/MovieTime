@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs"); %>
+
+</section>
+
+      <div class="reservation-body">
+        <h2 class="reservation-header">Reservation Form</h2>
+        <form method="post" action="/reservation">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="fname" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lname" placeholder="Last Name">
+          </div>
+          <div class="form-group">
+            <label>Email address</label>
+            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label>Day of Reservation</label>
+            <input type="number" class="form-control day-number" onkeyup="leftSeatsCheck()" name="day" min="1" max="7" placeholder="Day of Reservation">
+          </div>
+          <div class="form-group">
+            <label>Number of seats</label>
+            <input type="number" class="form-control seats-number" onkeyup="leftSeatsCheck()" name="number" min="1" max="5" placeholder="Enter number of seats">
+          </div>
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
+      </form>
+    </div>
+
+
+<%- include("partials/footer.ejs"); %>

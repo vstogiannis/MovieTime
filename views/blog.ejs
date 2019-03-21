@@ -1,0 +1,14 @@
+<%- include("partials/header.ejs"); %>
+</section>
+
+<% for (var i = 0; i < posts.length; i++){ %>
+    <div class="blog-articles">
+      <img class="blog-img" src="<%= posts[i].image %>" >
+      <h2><%= posts[i].title %></h2>
+      <p><%= posts[i].content.substring(0, 800) %><span class="dots">...</span><span class="show-more"><%= posts[i].content.substring(800, 10000)  %></span>
+        <span><button type="button" class="btn btn-link" onclick="toggleArtcle(<%= i %>)">Read more</button></span>
+      </p>
+  </div>
+<% } %>
+
+<%- include("partials/footer.ejs"); %>

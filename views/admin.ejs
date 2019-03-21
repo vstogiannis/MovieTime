@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>admin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="admin-body">
+
+    <h1 class="admin-header">Administrator page</h1>
+    <a href="/logout"><button type="button" class="btn btn-primary btn-lg" name="button">Logout</button></a>
+
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" onkeyup="mySearch()" placeholder="Search" aria-label="Search">
+        </form>
+      </nav>
+
+      <h2 class="reservation-list">Reservation List</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+            <th scope="col">Day</th>
+            <th scope="col"># Seats</th>
+          </tr>
+        </thead>
+          <%    for (var i = 0; i < reservations.length; i++){ %>
+        <tbody class="reserv">
+                    <tr>
+                    <th scope="row"><%= i+1 %></th>
+                    <td><%= reservations[i].firstName %></td>
+                    <td><%= reservations[i].lastName %></td>
+                    <td><%= reservations[i].email %></td>
+                    <td class="nday"><%= reservations[i].day %></td>
+                    <td class="nseats"><%= reservations[i].number %></td>
+                  </tr>
+          </tbody>
+              <%    } %>
+        </table>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Day</th>
+                <th scope="col">M</th>
+                <th scope="col">Tu</th>
+                <th scope="col">W</th>
+                <th scope="col">Th</th>
+                <th scope="col">F</th>
+                <th scope="col">Sa</th>
+                <th scope="col">Sun</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope ="row">#</th>
+          <%    for (var i = 0; i < leftSeats.length; i++){ %>
+                <td class="lseats"><%= leftSeats[i] %></td>
+        <%      } %>
+
+              </tr>
+            </tbody>
+          </table>
+
+          <form class="next-movie-post" action="/administrator" method="post">
+            <h2 class="next-movie-header">Next Movie</h2>
+            <div class="form-group">
+              <label class="btitle">Movie Title</label>
+              <input type="text" class="form-control" name="mtitle">
+            </div>
+            <div class="form-group">
+              <label class="bcontent">Movie Description</label>
+              <textarea class="form-control" rows="8" maxlength="180" name="mdescription"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="bdate">From</label>
+              <input type="date" class="form-control" name="date1"  min="2019-01-01" max="2020-12-31">
+            </div>
+            <div class="form-group">
+              <label class="bdate">Until</label>
+              <input type="date" class="form-control" name="date2" min="2019-01-01" max="2020-12-31">
+            </div>
+            <div class="form-group">
+              <label class="bimage">Image1</label>
+              <input type="url" class="form-control" name="mimage1">
+            </div>
+            <div class="form-group">
+              <label class="bimage">Image2</label>
+              <input type="url" class="form-control" name="mimage2">
+            </div>
+            <div class="form-group">
+              <label class="bimage">Image3</label>
+              <input type="url" class="form-control" name="mimage3">
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+          </form>
+
+          <form class="blog-post" action="/administrator" method="post">
+            <h2 class="post-article-header">Post an article</h2>
+            <div class="form-group">
+              <label class="btitle">Title</label>
+              <input type="text" class="form-control" name="btitle">
+            </div>
+            <div class="form-group">
+              <label class="bcontent">Content</label>
+              <textarea class="form-control" rows="8" name="bcontent"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="bimage">Image</label>
+              <input type="url" class="form-control" name="bimage">
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+          </form>
+
+        <script src="js/javascript.js" charset="utf-8"></script>
+  </body>
+</html>
